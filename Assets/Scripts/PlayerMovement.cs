@@ -6,19 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     SwipeControl swipeControl;
-    Vector3 temp;
-
-    CharacterController characterController;
-    Movement movement;
-
-    [SerializeField]
-    Vector3 movementTransform;
-    
-    [SerializeField]
-    float speed = 3f;
 
     [SerializeField]
     float sensivity = 5f;
+
+    [SerializeField]
+    float xSpeed = 20f;
+
+    [SerializeField]
+     float zSpeed = 0.1f;
+
 
     Vector2 readingValue;
     Vector3 movementValue;
@@ -27,8 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         readingValue = Vector2.zero;
         swipeControl = new SwipeControl();
-        characterController = GetComponent<CharacterController>();
-        movement = GetComponent<Movement>();
+        //characterController = GetComponent<CharacterController>();
 
         swipeControl.Move.MoveX.started += MovementInputX;
 
@@ -47,14 +43,27 @@ public class PlayerMovement : MonoBehaviour
     {
         swipeControl.Disable();
     }
+
     private void Update()
     {
-        characterController.Move(movementValue/5);
+        MoveForward();
+
+        transform.Translate(movementValue/sensivity * Time.deltaTime * xSpeed);
+
     }
 
-    void MovementInputX(InputAction.CallbackContext context)
+    
+    public void MovementInputX(InputAction.CallbackContext context)
     {
         readingValue = context.ReadValue<Vector2>();
         movementValue.x = readingValue.x;
     }
+
+
+
+    public void MoveForward()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * zSpeed);
+    }
+
 }
