@@ -78,7 +78,7 @@ public class PickUpController : MonoBehaviour
         for (int i = cubeController.stackList.Count-1; i >= 1; i--)
         {
             cubeController.stackList[i].transform.DOMoveX(cubeController.stackList[i - 1].position.x, 0.1f);
-        }
+        }   
     }
 
 }
