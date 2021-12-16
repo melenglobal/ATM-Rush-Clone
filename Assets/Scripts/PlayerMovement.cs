@@ -11,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
     float sensivity = 5f;
 
     [SerializeField]
-    float xSpeed = 20f;
+    float xSpeed = 15f;
 
     [SerializeField]
-     float zSpeed = 0.1f;
+     float zSpeed = 0.05f;
 
 
     Vector2 readingValue;

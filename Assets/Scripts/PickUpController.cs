@@ -8,6 +8,7 @@ public class PickUpController : MonoBehaviour
     private GameObject pickUp;
     private GameObject Player;
     private CubeController cubeController;
+    public List<GameObject> List;
     public bool OnPickUp = false;
     public int Length;
     Vector3 pos;
@@ -32,8 +33,7 @@ public class PickUpController : MonoBehaviour
         if (other.tag == "PickUp")
         {
             //Tagi sağ-sol yaparken birbirleriyle tekrar etkileştikleri için değiştik.
-            other.tag = "Collected";
-
+            other.tag = "Money";
             //adding
             OnPickUp = true;
             other.transform.SetParent(this.transform);

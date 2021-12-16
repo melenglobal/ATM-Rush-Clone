@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class EarningsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag == "Money")
+        {
+            other.tag = "Gold";
+            other.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            other.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
+
+        }
+        else if (other.tag == "Gold")
+        {
+            other.tag = "Diamond";
+            other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            other.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        }
+       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
