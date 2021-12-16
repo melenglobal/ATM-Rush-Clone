@@ -9,6 +9,7 @@ TagManager:
   - Money
   - Gold
   - Diamond
+  - Destroyer
   layers:
   - Default
   - TransparentFX

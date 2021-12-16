@@ -41,6 +41,7 @@ public class PickUpController : MonoBehaviour
             other.transform.localPosition = pos;
             
             cubeController.stackList.Add(other.transform);
+            other.GetComponent<IndexHolder>().index = cubeController.stackList.Count - 1;
 
             pos.z += 1;
             //collider size

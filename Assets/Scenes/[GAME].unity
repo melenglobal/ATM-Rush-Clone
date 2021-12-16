@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 6230316}
   - component: {fileID: 6230315}
   - component: {fileID: 6230314}
+  - component: {fileID: 6230317}
   m_Layer: 0
   m_Name: Collectables (12)
   m_TagString: PickUp
@@ -268,6 +269,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6230317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &7432313
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +293,7 @@ GameObject:
   - component: {fileID: 7432315}
   - component: {fileID: 7432314}
   - component: {fileID: 7432316}
+  - component: {fileID: 7432317}
   m_Layer: 0
   m_Name: Collectables
   m_TagString: PickUp
@@ -332,6 +347,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7432317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &22168244
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,9 +372,11 @@ GameObject:
   - component: {fileID: 22168247}
   - component: {fileID: 22168246}
   - component: {fileID: 22168245}
+  - component: {fileID: 22168249}
+  - component: {fileID: 22168250}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Destroyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,12 +451,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22168244}
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0.9, y: 0.776, z: 20.050003}
+  m_LocalPosition: {x: -1.04, y: 0.776, z: 53.4}
   m_LocalScale: {x: 2, y: 0.2, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
+--- !u!114 &22168249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22168244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab97984be0dd1241912f7bf0788f190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &22168250
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22168244}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &48673817
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +496,7 @@ GameObject:
   - component: {fileID: 48673820}
   - component: {fileID: 48673819}
   - component: {fileID: 48673818}
+  - component: {fileID: 48673821}
   m_Layer: 0
   m_Name: Collectables (4)
   m_TagString: PickUp
@@ -491,6 +550,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48673821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48673817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &70114580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1296,7 @@ GameObject:
   - component: {fileID: 406231440}
   - component: {fileID: 406231439}
   - component: {fileID: 406231438}
+  - component: {fileID: 406231441}
   m_Layer: 0
   m_Name: Collectables (10)
   m_TagString: PickUp
@@ -1277,6 +1350,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &406231441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406231437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &407326286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1485,7 @@ GameObject:
   - component: {fileID: 441644715}
   - component: {fileID: 441644714}
   - component: {fileID: 441644713}
+  - component: {fileID: 441644716}
   m_Layer: 0
   m_Name: Collectables (8)
   m_TagString: PickUp
@@ -1452,6 +1539,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441644716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441644712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &479637656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,7 +2601,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2669336, y: 1.1909049e-16, z: -7.5468073e-16, w: 0.96371496}
+  m_LocalRotation: {x: 0.26693356, y: -0.000000028720944, z: 0.00000000795524, w: 0.96371496}
   m_LocalPosition: {x: -0.84, y: 6.29, z: -6.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2892,6 +2992,7 @@ GameObject:
   - component: {fileID: 1133836813}
   - component: {fileID: 1133836812}
   - component: {fileID: 1133836811}
+  - component: {fileID: 1133836814}
   m_Layer: 0
   m_Name: Collectables (6)
   m_TagString: PickUp
@@ -2945,6 +3046,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1133836814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133836810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1134503715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2956,6 +3070,7 @@ GameObject:
   - component: {fileID: 1134503718}
   - component: {fileID: 1134503717}
   - component: {fileID: 1134503716}
+  - component: {fileID: 1134503719}
   m_Layer: 0
   m_Name: Collectables (1)
   m_TagString: PickUp
@@ -3009,6 +3124,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1134503719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134503715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1156378918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3310,7 @@ GameObject:
   - component: {fileID: 1208444887}
   - component: {fileID: 1208444886}
   - component: {fileID: 1208444885}
+  - component: {fileID: 1208444888}
   m_Layer: 0
   m_Name: Collectables (9)
   m_TagString: PickUp
@@ -3235,6 +3364,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1208444888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208444884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1236199147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,6 +3388,7 @@ GameObject:
   - component: {fileID: 1236199150}
   - component: {fileID: 1236199149}
   - component: {fileID: 1236199148}
+  - component: {fileID: 1236199151}
   m_Layer: 0
   m_Name: Collectables (11)
   m_TagString: PickUp
@@ -3299,6 +3442,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236199151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236199147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1238172534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,6 +3466,7 @@ GameObject:
   - component: {fileID: 1238172537}
   - component: {fileID: 1238172536}
   - component: {fileID: 1238172535}
+  - component: {fileID: 1238172538}
   m_Layer: 0
   m_Name: Collectables (5)
   m_TagString: PickUp
@@ -3363,6 +3520,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238172538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238172534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1273373112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,7 +4093,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378943204}
-  m_LocalRotation: {x: 0.2669336, y: 1.1909049e-16, z: -7.5468073e-16, w: 0.96371496}
+  m_LocalRotation: {x: 0.26693356, y: -0.000000028720944, z: 0.00000000795524, w: 0.96371496}
   m_LocalPosition: {x: -0.84, y: 6.29, z: -6.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3942,6 +4112,7 @@ GameObject:
   - component: {fileID: 1398948760}
   - component: {fileID: 1398948759}
   - component: {fileID: 1398948758}
+  - component: {fileID: 1398948761}
   m_Layer: 0
   m_Name: Collectables (2)
   m_TagString: PickUp
@@ -3995,6 +4166,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1398948761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398948757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1421822287
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,6 +4271,7 @@ GameObject:
   - component: {fileID: 1440976161}
   - component: {fileID: 1440976160}
   - component: {fileID: 1440976159}
+  - component: {fileID: 1440976162}
   m_Layer: 0
   m_Name: Collectables (3)
   m_TagString: PickUp
@@ -4140,6 +4325,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1440976162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440976158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1547490830
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,6 +5376,7 @@ GameObject:
   - component: {fileID: 2059148954}
   - component: {fileID: 2059148953}
   - component: {fileID: 2059148952}
+  - component: {fileID: 2059148955}
   m_Layer: 0
   m_Name: Collectables (7)
   m_TagString: PickUp
@@ -5231,6 +5430,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2059148955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059148951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aea08a45c7d584fab7d9033ef92fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &2063094635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5528,6 +5740,10 @@ PrefabInstance:
     - target: {fileID: 2325823362325536331, guid: 85fb8fdc9710b478d99afffefc386429, type: 3}
       propertyPath: m_Name
       value: Pendulums
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325823362325536331, guid: 85fb8fdc9710b478d99afffefc386429, type: 3}
+      propertyPath: m_TagString
+      value: Destroyer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85fb8fdc9710b478d99afffefc386429, type: 3}
