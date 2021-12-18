@@ -6,42 +6,38 @@ using DG.Tweening;
 public class PickUpController : MonoBehaviour
 {
     private GameObject pickUp;
-    private GameObject Player;
-    private CubeController cubeController;
-    public List<GameObject> List;
-    public bool OnPickUp = false;
-    public int Length;
-    Vector3 pos;
+    public Vector3 pos;
     BoxCollider _collider;
-   
+    private bool isPickedUp;
+    public List<GameObject> stackList;
+
     private void Awake()
     {
-        cubeController = CubeController.Instance;
-        Player = GameObject.Find("Player");
         pos = Vector3.zero;
         _collider = GetComponent<BoxCollider>();
 
     }
     private void Update()
     {
-        MoveWavely();
+        if (isPickedUp)
+        {
+            MoveWavely();
+        }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-       
-        if (other.tag == "PickUp")
+        if (other.CompareTag("PickUp"))
         {
             //Tagi sağ-sol yaparken birbirleriyle tekrar etkileştikleri için değiştik.
             other.tag = "Money";
             //adding
-            OnPickUp = true;
             other.transform.SetParent(this.transform);
-
+           
             other.transform.localPosition = pos;
             
-            cubeController.stackList.Add(other.transform);
-            other.GetComponent<IndexHolder>().index = cubeController.stackList.Count - 1;
+            stackList.Add(other.gameObject);
+            other.gameObject.AddComponent<DestroyerControl>();
+            other.GetComponent<IndexHolder>().index = stackList.Count - 1;
 
             pos.z += 1;
             //collider size
@@ -51,15 +47,11 @@ public class PickUpController : MonoBehaviour
             _size.z += 1;
 
             Vector3 _center = _collider.center;
-
             _center.z += .5f;
-
             _collider.size = _size;
-
             _collider.center = _center;
-
             StartCoroutine(ScaleMotion());
-
+            
         }
     }
 
@@ -67,19 +59,25 @@ public class PickUpController : MonoBehaviour
     IEnumerator ScaleMotion()
     {
         yield return new WaitForSeconds(0.05f);
-        for (int i = cubeController.stackList.Count - 1; i >= 0; i--)
+        for (int i = stackList.Count - 1; i >= 0; i--)
         {
-            cubeController.stackList[i].DOScale(1.2f, 0.2f).SetLoops(2, LoopType.Yoyo);
+            stackList[i].transform.DOScale(1.2f, 0.2f).SetLoops(2, LoopType.Yoyo);
             yield return new WaitForSeconds(0.2f);
         }
+        isPickedUp = true;
 
     }
     void MoveWavely()
     {
-        for (int i = cubeController.stackList.Count-1; i >= 1; i--)
+        if (stackList!=null)
         {
-            cubeController.stackList[i].transform.DOMoveX(cubeController.stackList[i - 1].position.x, 0.1f);
-        }   
+            for (int i = stackList.Count-1; i >= 1; i--)
+            {
+                stackList[i].transform.DOMoveX(stackList[i - 1].transform.position.x, 0.1f);
+            }   
+        }
+        
+      
     }
 
 }

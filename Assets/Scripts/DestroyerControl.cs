@@ -5,22 +5,24 @@ using DG.Tweening;
 
 public class DestroyerControl : MonoBehaviour
 {
-
+    private PickUpController pickUpController;
+    public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Money") || other.gameObject.CompareTag("Gold") || other.gameObject.CompareTag("Diamond"))
+        if (other.CompareTag("Destroyer"))
         {
-            Debug.Log("Gördüm ordasýn!");
-            int index = other.transform.GetComponent<IndexHolder>().index;
-
-            for (int i = index; i < CubeController.Instance.stackList.Count; i++)
+            
+            other.transform.GetComponent<Collider>().enabled = false;
+            var index =PickUpController.stackList.IndexOf(transform.gameObject);
+            Debug.Log(index);
+            for (int i = pickUpController.stackList.Count-1; i >= index; i--)
             {
-                CubeController.Instance.stackList[i].transform.SetParent(null);
-                var pos = CubeController.Instance.stackList[i].transform;
-                CubeController.Instance.stackList[i].transform.DOJump(pos.position + Vector3.forward, 5.0f, 4, 1.5f);
-                CubeController.Instance.stackList.RemoveAt(i);
+                PickUpController.stackList[i].transform.SetParent(null);
+                PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,5,4,1);
+                PickUpController.stackList.RemoveAt(i);
+                PickUpController.pos.z -= pickUpController.stackList.Count-index;
             }
-
+            
         }
     }
 }
