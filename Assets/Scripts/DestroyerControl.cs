@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class DestroyerControl : MonoBehaviour
 {
@@ -14,15 +15,19 @@ public class DestroyerControl : MonoBehaviour
             
             other.transform.GetComponent<Collider>().enabled = false;
             var index =PickUpController.stackList.IndexOf(transform.gameObject);
-            Debug.Log(index);
-            for (int i = pickUpController.stackList.Count-1; i >= index; i--)
+            var count = PickUpController.stackList.Count;
+            for (int i = PickUpController.stackList.Count-1; i >= index; i--)
             {
                 PickUpController.stackList[i].transform.SetParent(null);
                 PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,5,4,1);
                 PickUpController.stackList.RemoveAt(i);
-                PickUpController.pos.z -= pickUpController.stackList.Count-index;
+                
             }
             
+            PickUpController._collider.size -= Vector3.forward* (count-index);
+            PickUpController._collider.center -= Vector3.forward* (count-index)/2;
+            PickUpController.pos -= Vector3.forward * (count - index);
+
         }
     }
 }

@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     SwipeControl swipeControl;
+    private bool isFinished;
 
     [SerializeField]
     float sensivity = 5f;
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+       
         readingValue = Vector2.zero;
         swipeControl = new SwipeControl();
         //characterController = GetComponent<CharacterController>();
@@ -46,10 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        MoveForward();
-
-        transform.Translate(movementValue/sensivity * Time.deltaTime * xSpeed);
-
+       
+            PlayerControlMovement();
+        
     }
 
     
@@ -60,10 +63,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-
-    public void MoveForward()
+    private void PlayerControlMovement()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * zSpeed);
+        if (isFinished)
+        {
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3.75f, 1.75f), transform.position.y,
+                transform.position.z);
+            transform.Translate(Vector3.forward * Time.deltaTime * zSpeed);
+            transform.Translate(movementValue/sensivity * Time.deltaTime * xSpeed);
+        }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Band"))
+        {
+            isFinished = true;
+        }
+    }
 }

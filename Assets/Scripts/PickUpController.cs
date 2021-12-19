@@ -7,7 +7,7 @@ public class PickUpController : MonoBehaviour
 {
     private GameObject pickUp;
     public Vector3 pos;
-    BoxCollider _collider;
+   public  BoxCollider _collider;
     private bool isPickedUp;
     public List<GameObject> stackList;
 
@@ -41,15 +41,9 @@ public class PickUpController : MonoBehaviour
 
             pos.z += 1;
             //collider size
-            Vector3 _size = _collider.size;
-            
-
-            _size.z += 1;
-
-            Vector3 _center = _collider.center;
-            _center.z += .5f;
-            _collider.size = _size;
-            _collider.center = _center;
+           
+            _collider.size += Vector3.forward;
+            _collider.center += Vector3.forward/2;
             StartCoroutine(ScaleMotion());
             
         }

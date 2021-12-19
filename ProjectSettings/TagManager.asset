@@ -10,6 +10,7 @@ TagManager:
   - Gold
   - Diamond
   - Destroyer
+  - Band
   layers:
   - Default
   - TransparentFX
