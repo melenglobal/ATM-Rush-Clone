@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
  
     public IndexHolder indexHolder;
     public GameObject HappyBanker;
+    public Animator myAnim;
     SwipeControl swipeControl;
     private bool isFinished;
     public Transform pos;
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 readingValue;
     Vector3 movementValue;
+
+    public bool isWalking = true;
 
     private void Awake()
     {
@@ -95,7 +98,8 @@ public class PlayerMovement : MonoBehaviour
        
         if (other.CompareTag("Band"))
         {
-            
+            isWalking = false;
+            myAnim.SetBool("isWalking",isWalking);
             isFinished = true;
 
             Debug.Log(gm.IncreaseScore());
