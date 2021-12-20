@@ -8,6 +8,8 @@ public class DestroyerControl : MonoBehaviour
 {
     private PickUpController pickUpController;
     public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
+    public int score;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Destroyer"))

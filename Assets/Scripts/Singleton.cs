@@ -1,53 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour
+	where T : Component
 {
-    private static bool n_ShuttingDown = false;
-    private static Object n_Lock = new Object();
-    private static T n_Instance;
+	private static T _instance;
+	public static T Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				var objs = FindObjectsOfType(typeof(T)) as T[];
+				if (objs.Length > 0)
+					_instance = objs[0];
+				if (objs.Length > 1)
+				{
+					Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
+				}
+				if (_instance == null)
+				{
+					GameObject obj = new GameObject();
+					obj.hideFlags = HideFlags.HideAndDontSave;
+					_instance = obj.AddComponent<T>();
+				}
+			}
+			return _instance;
+		}
+	}
+}
 
 
-    public static T Instance
-    {
-        get
-        {
-            if (n_ShuttingDown)
-            {
-                Debug.LogWarning("[Singleton] Instance " + typeof(T)
-                    + " already destroyed.Returning null");
-                return null;
+public class SingletonPersistent<T> : MonoBehaviour
+	where T : Component
+{
+	public static T Instance { get; private set; }
 
-            }
-            lock (n_Lock)
-            {
-                if (n_Instance == null)
-                {
-                    n_Instance = (T)FindObjectOfType(typeof(T));
-
-                    if (n_Instance == null)
-                    {
-                        var singletonObject = new GameObject();
-                        n_Instance = singletonObject.AddComponent<T>();
-                        singletonObject.name = typeof(T).ToString() + " (singleton)";
-                    }
-                }
-                
-                //DontDestroyOnLoad(n_Instance.gameObject);
-                return n_Instance;
-            }
-        }
-
-    }
-
-    private void OnApplicationQuit()
-    {
-        n_ShuttingDown = true;
-    }
-    private void OnDestroy()
-    {
-        n_ShuttingDown = true;
-    }
-
+	public virtual void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this as T;
+			DontDestroyOnLoad(this);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
 }

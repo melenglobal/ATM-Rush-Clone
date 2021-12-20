@@ -10,9 +10,15 @@ public class PlayerMovement : MonoBehaviour
 {
     private PickUpController pickUpController;
     public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
+ 
+    public IndexHolder indexHolder;
+    public GameObject HappyBanker;
     SwipeControl swipeControl;
     private bool isFinished;
-
+    public Transform pos;
+    public GameObject _prefab;
+    public float offsetY;
+    private GameManager gm;
     [SerializeField]
     float sensivity = 5f;
 
@@ -28,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-       
+
+        gm = GameManager.Instance;
         readingValue = Vector2.zero;
 
         swipeControl = new SwipeControl();
@@ -39,6 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
         swipeControl.Move.MoveX.canceled += MovementInputX;
 
+        
+
+    }
+    private void Start()
+    {
+        Debug.Log(gm);
     }
 
     private void OnEnable()
@@ -79,14 +92,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
         if (other.CompareTag("Band"))
         {
+            
             isFinished = true;
 
-                for (int i = PickUpController.stackList.Count - 1; i >= 1; i--)
-                {
-                    PickUpController.stackList[i].transform.DOMoveY(PickUpController.stackList[i - 1].transform.position.y, 0.2f);
-                }
+            Debug.Log(gm.IncreaseScore());
+
+            HappyBanker.SetActive(false);
+            
+
+            for (int i = 0; i < gm.score; i++)
+            {
+                Instantiate(HappyBanker, new Vector3(0, offsetY, 0),Quaternion.identity);
+                Instantiate(_prefab, pos.position + new Vector3(0, offsetY, 0), Quaternion.identity);
+                offsetY += 1;
+            }
+
+
+
+
         }
     }
 }

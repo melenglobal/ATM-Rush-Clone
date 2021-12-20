@@ -8,9 +8,22 @@ public class GameManager : Singleton<GameManager>
 {
     public State state;
 
+    private GameObject Player;
+
+    public int score;
+
+
     private void Awake()
     {
-        state = State.Start;
-        state = State.Finish;
+        score = 0;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        state = State.Start;;
+    }
+
+    public int IncreaseScore()
+    {
+        score++;
+        return score;
+
     }
 }

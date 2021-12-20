@@ -7,14 +7,15 @@ using UnityEngine;
 public class IndexHolder : MonoBehaviour
 {
     public int index;
-
+   
     private PickUpController pickUpController;
     public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Band"))
         {
-            
+            GameManager.Instance.score++;
             var count = PickUpController.stackList.Count;
             PickUpController.stackList.RemoveAt(PickUpController.stackList.Count-1);
             PickUpController._collider.size -= Vector3.forward* (count-index);

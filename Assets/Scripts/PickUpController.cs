@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class PickUpController : MonoBehaviour
 {
+    public int score;
     private GameObject pickUp;
     public Vector3 pos;
    public  BoxCollider _collider;
@@ -30,6 +31,7 @@ public class PickUpController : MonoBehaviour
         {
             //Tagi sağ-sol yaparken birbirleriyle tekrar etkileştikleri için değiştik.
             other.tag = "Money";
+            score++;
             //adding
             other.transform.SetParent(this.transform);
            
