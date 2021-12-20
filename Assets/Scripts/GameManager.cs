@@ -11,5 +11,6 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         state = State.Start;
+        state = State.Finish;
     }
 }

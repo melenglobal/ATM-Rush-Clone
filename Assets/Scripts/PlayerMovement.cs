@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private PickUpController pickUpController;
+    public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
     SwipeControl swipeControl;
     private bool isFinished;
 
@@ -79,6 +82,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Band"))
         {
             isFinished = true;
+
+                for (int i = PickUpController.stackList.Count - 1; i >= 1; i--)
+                {
+                    PickUpController.stackList[i].transform.DOMoveY(PickUpController.stackList[i - 1].transform.position.y, 0.2f);
+                }
         }
     }
 }

@@ -21,7 +21,10 @@ public class EarningsManager : MonoBehaviour
             other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
             other.gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
-       
+        else if (other.tag == "ATM")
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 }

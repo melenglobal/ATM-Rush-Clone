@@ -2698,6 +2698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 448230752}
+  - component: {fileID: 448230753}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -2713,7 +2714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448230751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 250}
+  m_LocalPosition: {x: -1.22, y: 0, z: 250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 586480013}
@@ -2735,6 +2736,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &448230753
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448230751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &479637656
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,7 +3510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586480012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.14, y: 1.25, z: 0.5099945}
+  m_LocalPosition: {x: 0.15, y: 1.25, z: 0.5099945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 672159404}
@@ -3769,6 +3783,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631928524}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &632275377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5089086457304412435, guid: 5fb3948909f974ba3ae1c031790f6eb3, type: 3}
+  m_PrefabInstance: {fileID: 1685621436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &632275379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632275377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &643318736
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,7 +4070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089086457304412434, guid: 5fb3948909f974ba3ae1c031790f6eb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.085580945
+      value: 0.03699872
       objectReference: {fileID: 0}
     - target: {fileID: 5089086457304412434, guid: 5fb3948909f974ba3ae1c031790f6eb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5587,7 +5619,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.26693356, y: -3e-45, z: 1e-45, w: 0.96371496}
+  m_LocalRotation: {x: 0.26693356, y: 1e-45, z: 0, w: 0.96371496}
   m_LocalPosition: {x: -0.84, y: 6.2, z: -6.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5787,6 +5819,24 @@ Transform:
   m_Father: {fileID: 804658200}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &991960318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5089086457304412435, guid: 5fb3948909f974ba3ae1c031790f6eb3, type: 3}
+  m_PrefabInstance: {fileID: 5089086457072502233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &991960320
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991960318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &995420167
 GameObject:
   m_ObjectHideFlags: 0
@@ -8750,7 +8800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378943204}
-  m_LocalRotation: {x: 0.26693356, y: -3e-45, z: 1e-45, w: 0.96371496}
+  m_LocalRotation: {x: 0.26693356, y: 1e-45, z: -0, w: 0.96371496}
   m_LocalPosition: {x: -0.84, y: 6.2, z: -6.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

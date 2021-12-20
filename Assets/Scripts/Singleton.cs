@@ -33,7 +33,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         singletonObject.name = typeof(T).ToString() + " (singleton)";
                     }
                 }
-                //InýtManager devrede.
+                
                 //DontDestroyOnLoad(n_Instance.gameObject);
                 return n_Instance;
             }

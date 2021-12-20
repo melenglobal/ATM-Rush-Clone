@@ -11,6 +11,7 @@ TagManager:
   - Diamond
   - Destroyer
   - Band
+  - ATM
   layers:
   - Default
   - TransparentFX
