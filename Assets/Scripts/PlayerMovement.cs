@@ -105,9 +105,11 @@ public class PlayerMovement : MonoBehaviour
 
             for (int i = 0; i < gm.score; i++)
             {
-                Instantiate(HappyBanker, new Vector3(0, offsetY, 0),Quaternion.identity);
+                
                 Instantiate(_prefab, pos.position + new Vector3(0, offsetY, 0), Quaternion.identity);
                 offsetY += 1;
+ 
+
             }
 
 

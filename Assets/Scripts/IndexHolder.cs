@@ -17,11 +17,11 @@ public class IndexHolder : MonoBehaviour
         {
             GameManager.Instance.score++;
             var count = PickUpController.stackList.Count;
-            PickUpController.stackList.RemoveAt(PickUpController.stackList.Count-1);
-            PickUpController._collider.size -= Vector3.forward* (count-index);
-            PickUpController._collider.center -= Vector3.forward* (count-index)/2;
+            PickUpController.stackList.RemoveAt(PickUpController.stackList.Count - 1);
+            PickUpController._collider.size -= Vector3.forward * (count - index);
+            PickUpController._collider.center -= Vector3.forward * (count - index) / 2;
             PickUpController.pos -= Vector3.forward * (count - index);
-            
+
             Transform transform1;
             (transform1 = transform).SetParent(null);
 
@@ -30,7 +30,8 @@ public class IndexHolder : MonoBehaviour
             position = new Vector3(position.x, position.y, position1.z);
             transform1.position = position;
             transform.DOMoveX(position1.x, 1f);
-           
+
         }
+        
     }
 }

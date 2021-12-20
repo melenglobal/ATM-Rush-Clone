@@ -8,7 +8,6 @@ public class DestroyerControl : MonoBehaviour
 {
     private PickUpController pickUpController;
     public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
-    public int score;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,13 +19,12 @@ public class DestroyerControl : MonoBehaviour
             var count = PickUpController.stackList.Count;
             for (int i = PickUpController.stackList.Count-1; i >= index; i--)
             {
+                Debug.Log(PickUpController.stackList[i].transform.gameObject.tag);
                 PickUpController.stackList[i].transform.SetParent(null);
                 PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,2,3,1);
-                PickUpController.stackList[i].transform.tag = "Money";
+                
                 PickUpController.stackList.RemoveAt(i);
                 
-
-
             }
             
             PickUpController._collider.size -= Vector3.forward* (count-index);
