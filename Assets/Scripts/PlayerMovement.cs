@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     {
        
         readingValue = Vector2.zero;
+
         swipeControl = new SwipeControl();
-        //characterController = GetComponent<CharacterController>();
 
         swipeControl.Move.MoveX.started += MovementInputX;
 
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerControlMovement()
     {
-        if (isFinished)
+        if (isFinished==false)
         {
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3.75f, 1.75f), transform.position.y,
                 transform.position.z);

@@ -19,7 +19,7 @@ public class DestroyerControl : MonoBehaviour
             for (int i = PickUpController.stackList.Count-1; i >= index; i--)
             {
                 PickUpController.stackList[i].transform.SetParent(null);
-                PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,5,4,1);
+                PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,2,3,1);
                 PickUpController.stackList.RemoveAt(i);
                 
             }
