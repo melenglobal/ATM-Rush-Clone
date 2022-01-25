@@ -5,10 +5,9 @@ using DG.Tweening;
 
 public class PickUpController : MonoBehaviour
 {
-    public int score;
-    private GameObject pickUp;
+ 
     public Vector3 pos;
-   public  BoxCollider _collider;
+    public  BoxCollider _collider;
     private bool isPickedUp;
     public List<GameObject> stackList;
 
@@ -31,19 +30,22 @@ public class PickUpController : MonoBehaviour
         {
             //Tagi sağ-sol yaparken birbirleriyle tekrar etkileştikleri için değiştik.
             other.tag = "Money";
-            score++;
+
             //adding
-            other.transform.SetParent(this.transform);
-           
-            other.transform.localPosition = pos;
             
+            other.transform.SetParent(this.transform);
+            other.transform.localPosition = pos;
+            pos.z += 1;
+
+
+
             stackList.Add(other.gameObject);
             other.gameObject.AddComponent<DestroyerControl>();
             other.GetComponent<IndexHolder>().index = stackList.Count - 1;
 
-            pos.z += 1;
-            //collider size
-           
+            
+            
+            // Stack collider variables
             _collider.size += Vector3.forward;
             _collider.center += Vector3.forward/2;
             StartCoroutine(ScaleMotion());

@@ -12,10 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
  
     public IndexHolder indexHolder;
-    public GameObject HappyBanker;
-    public Animator myAnim;
     SwipeControl swipeControl;
-    private bool isFinished;
+  
     public Transform pos;
     public GameObject _prefab;
     public float offsetY;
@@ -52,10 +50,7 @@ public class PlayerMovement : MonoBehaviour
         
 
     }
-    private void Start()
-    {
-        Debug.Log(gm);
-    }
+   
 
     private void OnEnable()
     {
@@ -84,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerControlMovement()
     {
-        if (isFinished==false)
+        if (gm.state == State.Playing)
         {
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3.75f, 1.75f), transform.position.y,
                 transform.position.z);
@@ -99,12 +94,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Band"))
         {
             isWalking = false;
-            myAnim.SetBool("isWalking",isWalking);
-            isFinished = true;
+            //myAnim.SetBool("isWalking",isWalking);
+            gm.CallFinish();
 
             Debug.Log(gm.IncreaseScore());
 
-            HappyBanker.SetActive(false);
+//            HappyBanker.SetActive(false);
             
 
             for (int i = 0; i < gm.score; i++)

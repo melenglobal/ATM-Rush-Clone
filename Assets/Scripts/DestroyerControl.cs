@@ -15,23 +15,32 @@ public class DestroyerControl : MonoBehaviour
         {
             
             other.transform.GetComponent<Collider>().enabled = false;
-            var index =PickUpController.stackList.IndexOf(transform.gameObject);
+            var index = PickUpController.stackList.IndexOf(transform.gameObject); // vurduğum objenin indexi
+            Debug.Log(index);
             var count = PickUpController.stackList.Count;
             for (int i = PickUpController.stackList.Count-1; i >= index; i--)
             {
-                Debug.Log(PickUpController.stackList[i].transform.gameObject.tag);
+                PickUpController.stackList[i].GetComponent<IndexHolder>().index = 0;
                 PickUpController.stackList[i].transform.SetParent(null);
-                PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,2,3,1);
+                PickUpController.stackList[i].gameObject.transform.tag = "PickUp";
+               
+                PickUpController._collider.size -= Vector3.forward;
                 
-                PickUpController.stackList.RemoveAt(i);
-                
-            }
-            
-            PickUpController._collider.size -= Vector3.forward* (count-index);
-            PickUpController._collider.center -= Vector3.forward* (count-index)/2;
-            PickUpController.pos -= Vector3.forward * (count - index);
-       
+                PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,1,2,.1f);
 
+                PickUpController.stackList.RemoveAt(i);
+
+
+
+            }
+
+            Debug.Log(Vector3.forward * (count - index) / 2);
+            Debug.Log(Vector3.forward * (count - index));
+            //PickUpController._collider.size -= Vector3.forward * index;
+            PickUpController._collider.center -= Vector3.forward * (count-index)/2;
+            PickUpController.pos -= Vector3.forward * (count - index);
+
+            Destroy(this);
         }
      
     }
