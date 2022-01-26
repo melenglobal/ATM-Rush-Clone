@@ -15,29 +15,35 @@ public class DestroyerControl : MonoBehaviour
         {
             
             other.transform.GetComponent<Collider>().enabled = false;
-            var index = PickUpController.stackList.IndexOf(transform.gameObject); // vurduğum objenin indexi
-            Debug.Log(index);
-            var count = PickUpController.stackList.Count;
-            for (int i = PickUpController.stackList.Count-1; i >= index; i--)
+
+            if (PickUpController == null)
+            {
+                Debug.Log("Neden");
+            }
+            int index = PickUpController.stackList.IndexOf(transform.gameObject); // vurduğum andaki index
+            
+            int count = PickUpController.stackList.Count; // vurduğum andaki count
+
+            for (int i = PickUpController.stackList.Count - 1; i >= index; i--)
             {
                 PickUpController.stackList[i].GetComponent<IndexHolder>().index = 0;
+
                 PickUpController.stackList[i].transform.SetParent(null);
+
+                //PickUpController._collider.size -= new Vector3(0, 0, pickUpController.stackList[i].transform.position.z);
+
+                PickUpController.stackList[i].transform.DOJump(this.transform.position + new Vector3(Random.Range(-2,1),0,Random.Range(15,20)),5,3,.1f);
+
                 PickUpController.stackList[i].gameObject.transform.tag = "PickUp";
-               
-                PickUpController._collider.size -= Vector3.forward;
-                
-                PickUpController.stackList[i].transform.DOJump(PickUpController.stackList[i].transform.position,1,2,.1f);
 
                 PickUpController.stackList.RemoveAt(i);
 
-
-
             }
+            
+            PickUpController._collider.size -= Vector3.forward * index; 
 
-            Debug.Log(Vector3.forward * (count - index) / 2);
-            Debug.Log(Vector3.forward * (count - index));
-            //PickUpController._collider.size -= Vector3.forward * index;
             PickUpController._collider.center -= Vector3.forward * (count-index)/2;
+
             PickUpController.pos -= Vector3.forward * (count - index);
 
             Destroy(this);

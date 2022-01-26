@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 readingValue;
     Vector3 movementValue;
 
-    public bool isWalking = true;
+   
 
     private void Awake()
     {
@@ -64,8 +64,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-       
-            PlayerControlMovement();
+        if (!gm.isGameStarted)
+            return;
+
+        PlayerControlMovement();
         
     }
 
@@ -79,13 +81,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerControlMovement()
     {
-        if (gm.state == State.Playing)
-        {
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3.75f, 1.75f), transform.position.y,
-                transform.position.z);
-            transform.Translate(Vector3.forward * Time.deltaTime * zSpeed);
-            transform.Translate(movementValue/sensivity * Time.deltaTime * xSpeed);
-        }
+        
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3.75f, 1.75f), transform.position.y,
+               transform.position.z);
+        transform.Translate(Vector3.forward * Time.deltaTime * zSpeed);
+        transform.Translate(movementValue / sensivity * Time.deltaTime * xSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,26 +93,17 @@ public class PlayerMovement : MonoBehaviour
        
         if (other.CompareTag("Band"))
         {
-            isWalking = false;
-            //myAnim.SetBool("isWalking",isWalking);
-            gm.CallFinish();
-
-            Debug.Log(gm.IncreaseScore());
-
-//            HappyBanker.SetActive(false);
             
+           
+            gm.CallFinish();
 
             for (int i = 0; i < gm.score; i++)
             {
                 
                 Instantiate(_prefab, pos.position + new Vector3(0, offsetY, 0), Quaternion.identity);
-                offsetY += 1;
- 
+                offsetY +=.9f;
 
             }
-
-
-
 
         }
     }

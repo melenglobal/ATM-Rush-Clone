@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TowerControl : MonoBehaviour
 {
-    private PickUpController pickUpController;
-    public PickUpController PickUpController { get { return pickUpController == null ? pickUpController = transform.root.GetComponentInChildren<PickUpController>() : pickUpController; } }
+    [SerializeField] PickUpController pickUpController;
+
 
 
     private void OnTriggerEnter(Collider other)
@@ -13,14 +13,14 @@ public class TowerControl : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            var _index = PickUpController.stackList.IndexOf(transform.gameObject);
+           // int _index = PickUpController.stackList.IndexOf(transform.gameObject);
             Vector3 newPos = new Vector3(0, 1.5f, 0);
-            for (int i = 0; i < _index; i++)
+           /* for (int i = 0; i < _index; i++)
             {
                 
                 newPos.y += 1;
                 
-            }
+            }*/
         }
         
     }

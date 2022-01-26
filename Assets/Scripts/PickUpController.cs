@@ -40,11 +40,15 @@ public class PickUpController : MonoBehaviour
 
 
             stackList.Add(other.gameObject);
+           
             other.gameObject.AddComponent<DestroyerControl>();
-            other.GetComponent<IndexHolder>().index = stackList.Count - 1;
 
-            
-            
+            if (other.GetComponent<IndexHolder>() == null)
+            {
+                Debug.Log("Objede script yok");
+            }
+            other.GetComponent<IndexHolder>().index = stackList.Count - 1;
+ 
             // Stack collider variables
             _collider.size += Vector3.forward;
             _collider.center += Vector3.forward/2;
@@ -56,7 +60,7 @@ public class PickUpController : MonoBehaviour
 
     IEnumerator ScaleMotion()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         for (int i = stackList.Count - 1; i >= 0; i--)
         {
             stackList[i].transform.DOScale(1.2f, 0.2f).SetLoops(2, LoopType.Yoyo);
